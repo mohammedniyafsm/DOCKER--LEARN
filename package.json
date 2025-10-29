@@ -1,0 +1,28 @@
+{
+  "name": "docker-learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammedniyafsm/DOCKER--LEARN.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/mohammedniyafsm/DOCKER--LEARN/issues"
+  },
+  "homepage": "https://github.com/mohammedniyafsm/DOCKER--LEARN#readme",
+  "dependencies": {
+    "@types/express": "^5.0.5",
+    "express": "^5.1.0",
+    "prisma": "^6.18.0",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {}
+}
