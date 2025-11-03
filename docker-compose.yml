@@ -1,51 +1,29 @@
-docker-compose.yaml
-1
-version: '3.8'
-2
-Version of docker-compose
+version: "3.9"
+
 services:
-3
-mongodb:
-4
-image: mongo
-5
-6
-container_name:
-mongodb
-ports:
-7
--"27017:27017"
-Mongo service
-Backend service
-8
+  postgres_db:
+    image: postgres:17
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  user_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: user_app
+    environment:
+      DATABASE_URL: postgresql://postgres:mysecretpassword@postgres_db:5432/postgres
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres_db
+
 volumes:
-9
--mongodb_data:/data/db
-10
-11
-backend22:
-12
-image: backend22
-13
-container_name: backend_app
-14
-depends_on:
-15
--
-16
-mongodb
-17
--
-18
-ports:
-"3000:3000"
-19
-environment:
-20
-MONGO_URL: "mongodb://mongodb:27017
-21
-volumes:
-22
-mongodb_data:
-Volumes to create
-23
+  postgres_data:
